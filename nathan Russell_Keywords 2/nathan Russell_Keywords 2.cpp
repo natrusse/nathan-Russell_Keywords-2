@@ -13,6 +13,7 @@ int main()
 	srand(static_cast<unsigned int>(time(0)));
 
 	string username;
+	int playerSuccess = 0;
 
 	// Display Title of program to user
 	cout << "=============================================================\n";
@@ -44,17 +45,29 @@ int main()
 	string words[10] = { "Extinction", "Paramount", "Bonds", "Ghost", "Creation", "Rebound", "Recover", "Defy", "Protocol", "Reward" };
 
 	// selects a word and creates blanks (underscores)
-	string selected = words[rand() % 10 + 1];
-	string length(selected.size(), '_');
-	
-	string playerGuess;
-	
-	cout << selected << "\nTake a guess: ";
-	cin >> playerGuess
-	
+	while (playerSuccess != 3) {
+		string selected = words[rand() % 10 + 1];
+		string length(selected.size(), '_');
+		char playerGuess;
 
+
+		cout << length << "\nTake a guess: ";
+		cin >> playerGuess;
+
+		if (selected.find(playerGuess) != string::npos) {
+			for (int letter = 0; letter < selected.size(); letter++) {
+				if (playerGuess == selected[letter]) {
+					length[letter] = playerGuess;
+				}
+			}
+		}
+		if (playerGuess == ) {
+			++playerSuccess;
+
+		}
+	}
 	// Create an int var to count the number of simulations being run starting at 1
-	
+
 	// Display the simulation # is staring to the recruit. 
 
 	// Pick new 3 random words from your collection as the secret code word the recruit has to guess. 
@@ -111,6 +124,6 @@ int main()
 
 	//     Pause the Simulation with press any key to continue
 	system("pause");
-    return 0;
+	return 0;
 }
 
